@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css tester\results_editor_test.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+</head>
+<body>
+  <nav>
+    <div class="nav-left">
+        <a href="/events_editor">Events</a>
+        <a href="/entrants_editor">Entrants</a>
+        <a href="/declarations_editor">Declarations</a>
+        <a href="/results_editor">Results</a>
+    </div>
+    <div class="nav-right">
+        <a href="/profile" class="logo">
+            <img src="assets\Screenshot empty.png" alt="Logo" class="nav-logo">
+        </a>
+    </div>
+  </nav>
+    <div class="entrant-editor">
+        <div class="form">
+          <h1 class="header">Results Editor
+            <button class="info-button" onclick="infoGuide()">
+              <i class="fas fa-info-circle" aria-hidden="true"></i>
+            </button>
+          </h1>
+          <p class="subtext">Select a heat to add results</p>
+          <div class="selector">
+            <select id="raceSelect">
+              <option value="" disabled selected>Select a race</option>
+            </select>
+            <select id="heatSelect">
+                <option value="" disabled selected>Select a heat</option>
+            </select>
+  
+            <ul id="entrantList"></ul>
+            <div class="dropdown" id="entrants"></div>
+  
+            <div class="editors">
+              <!-- <button id="addExistingEntrantBtn" class="editor-button" onclick="addEntrantRace()">
+                Add Existing Entrant
+              </button> -->
+              <!-- <button id="deleteEntrantBtn" class="editor-button" onclick="toggleDeleteBtn()">
+                Remove Entrant
+              </button> -->
+            </div>
+          </div>
+          <div class="submit">
+            <button id="resultSave" class="results">Save Results</button>
+            <button id="resultPost" class="results">Post Results</button>
+          </div>
+        </div>
+      </div>
+    <script type="module" src="javaScript\results_editor.js"></script>
+</body>
+</html>

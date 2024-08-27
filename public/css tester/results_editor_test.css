@@ -1,0 +1,499 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: linear-gradient(to top right, rgba(17, 0, 130, 0.9), rgba(133, 0, 0, 0.9));
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.entrant-editor {
+    margin-top:5%;
+    margin-bottom: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 750px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    gap: 20px;
+}
+
+.form {
+    height: 100%;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 8px;
+    border: 2px solid #230082;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255,255,255,0.4);
+    position: relative;
+}
+
+.selector {
+    height: 500px;
+    margin-left: 5%;
+    width: 500px;
+}
+
+.submit {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin: 20px;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+button.results {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #850000;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s ease;
+}
+
+button.results:hover {
+    background-color: #230082;
+    color: whitesmoke;
+    transform: scale(1.1);
+}
+
+.header {
+    font-size: 28px;
+    text-align: center;
+    background-color: rgba(3, 0, 105, 1);
+    padding: 5%;
+    color: rgb(253, 224, 224);
+}
+
+.editors {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+#entrantList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background: #f9f9f9;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgb(11, 0, 111);
+    max-width: 350px;
+    margin: 20px auto;
+}
+
+#entrantList li {
+    max-height: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #e1e1e1;
+    display: flex;
+    align-items: center;
+}
+
+#entrantList li button {
+    margin-left: auto;
+}
+
+#entrantList li:last-child {
+    border-bottom: none;
+}
+
+#entrantList li:hover {
+    background-color: #ececec;
+}
+
+#entrantList input[type='checkbox']:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);
+}
+
+#raceSelect, #entrantSelect, #heatSelect {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    padding: 8px 12px;
+    border: 2px solid #0056b3;
+    border-radius: 4px;
+    background-color: rgba(255,255,255,0.65);
+    width: 320px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+#heatSelect {
+    margin-top: 10px;
+    display: none;
+}
+
+#raceSelect:hover, #entrantSelect:hover, #heatSelect:hover {
+    border-color: #003e70;
+}
+
+#raceSelect:focus, #entrantSelect:focus, #heatSelect:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: #000000; /* Dark gray color for a subtle look */
+    background: transparent; /* No background for the default state */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transitions */
+    outline: none; /* Remove outline on focus */
+    margin-top: 20px;
+    padding: 0px 8px 0px 8px;
+    border-radius: 3px;
+}
+
+.close:hover {
+    color: #280000; /* Deep red color on hover */
+    transform: scale(1.2); /* Slightly increase size on hover */
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.close::before {
+    content: '\00d7'; /* Unicode for multiplication sign (×) */
+    font-family: Arial, sans-serif; /* Ensure a consistent font */
+}
+
+button.submit-button {
+    font-size: 15px;
+    padding: 8px 20px;
+    background-color: #850000;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s ease;
+}
+
+button.submit-button:hover {
+    background-color: #230082;
+    color: whitesmoke;
+    transform: scale(1.1);
+}
+
+button.submit, button.editor-button, .edit-btn, .save-btn, .cancel-btn, .delete-btn {
+    font-size: 10px;
+    padding: 5px 10px;
+    background-color: #850000;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgb(11, 0, 111);
+    transition: background-color 0.3s, color 0.3s, transform 0.3s ease;
+    max-height: 25px;
+}
+
+ button.editor-button:hover, .edit-btn:hover, .save-btn:hover, .cancel-btn:hover, .delete-btn:hover {
+    background-color: #230082;
+    color: whitesmoke;
+    transform: scale(1.1);
+}
+
+.subheader, .subtext {
+    font-size: 17px;
+    margin-left: 5%;
+}
+
+.dropdown {
+    display: none;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #000000;
+    padding: 8px 12px;
+    border: 2px solid #0056b3;
+    border-radius: 4px;
+    width: 105%;
+    max-width: 105%;
+    position: relative;
+    margin-bottom: 20px;
+    background: linear-gradient(to top right, rgba(255, 167, 167, 1), rgba(179, 167, 255, 1));
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    max-height: 300px;
+    overflow-y: auto;
+    cursor: pointer;
+}
+
+.dropdown:focus {
+    border-color: #008cff;
+}
+
+.dropdown-content label {
+    display: block;
+}
+
+.dropdown .dropdown-content {
+    display: block;
+}
+
+.race-header, .entrant-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 8px;
+    align-items: center;
+}
+
+.race-header {
+    background-color: #0056b3;
+    color: white;
+    font-weight: bold;
+}
+
+.race-header span {
+    text-align: center;
+}
+
+.entrant-row {
+    border-top: 1px solid #ddd;
+}
+
+.entrant-row span {
+    text-align: center;
+}
+
+.entrant-row input[type="text"] {
+    width: 100%;
+}
+
+.entrant-row label {
+    display: flex;
+    align-items: center;
+}
+
+.popup-container {
+    position: fixed;
+    left: 40%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 300px;
+    border-radius: 8px;
+    border: 1px solid #ccc; /* subtle border */
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    font-size: 14px; /* readable text size */
+    color: #333; /* darker text for better readability */
+}
+
+.popup-close-button {
+    padding: 5px 10px;
+    background-color: #f44336; /* red color for attention */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right; /* align the button to the right */
+    margin-top: -20px; /* align top for better UI */
+    margin-right: -20px; /* align right for better UI */
+}
+
+.popup-close-button:hover {
+    background-color: #d32f2f; /* darker shade on hover */
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    z-index: 1000;
+    width: 400px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to top right, rgba(255, 167, 167, 1), rgba(179, 167, 255, 1));
+}
+
+.popup p {
+    margin: 0;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.popup h2 {
+    grid-column: span 2;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.popup p, .popup label {
+    border-bottom: 2px solid #ffffff; /* 2px border, solid style, white color */
+    padding-bottom: 5px; /* Optional: add some padding for spacing */
+}
+
+.popup button {
+    margin-top: 20px;
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.nav-left a {
+    margin-right: 15px;
+    width: 100%;
+}
+
+.nav-right a {
+    margin-left: 15px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    font-size: 1em;
+    border-radius: 20px;
+}
+
+nav a.logo {
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.nav-logo {
+    max-width: 100px;
+    max-height: 40px;
+    width: 100%; 
+    height: auto;
+}
+
+
+.info-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(to top right, rgba(255, 207, 207, 1), rgba(213, 207, 255, 1));
+}
+
+/* Content Styling */
+.info-popup .info-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-popup li {
+    margin: 20px 0px 15px 0px;
+}
+
+.info-popup .info-content h2 {
+    margin-bottom: 10px;
+    color: #0056b3;
+}
+
+.info-popup .info-content p {
+    margin: 0;
+    color: #333;
+}
+
+.info-popup button.close {
+    margin: 0px;
+}
+
+.info-button {
+    display: inline-flex;
+    float: right;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #ffd8d8;
+    color: #0056b3;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.info-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);
+}
+
+.info-button i {
+    font-size: 20px;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Race Setup</title>
+    <link rel="stylesheet" href="css tester/events_editor_test.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="/events_editor">Events</a>
+            <a href="/entrants_editor">Entrants</a>
+            <a href="/declarations_editor">Declarations</a>
+            <a href="/results_editor">Results</a>
+        </div>
+        <div class="nav-right">
+            <a href="/profile" class="logo">
+                <img src="assets\Screenshot empty.png" alt="Logo" class="nav-logo">
+            </a>
+        </div>
+    </nav>
+    <div class="race-editor">
+        <div class="form">
+            <h1 class="header">Race List Updates
+                <button class="info-button" onclick="infoGuide()">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i>
+                </button>
+            </h1>
+            <p class="subtext"></p>
+            <div class="events">
+                <div class="grid-container" id="raceGrid">
+                    <!-- Grid items will be populated by JavaScript -->
+                </div>
+            </div>
+            <!-- Buttons to add and remove races -->
+            <div class="editors">
+                <button id="addRaceButton" onclick="toggleAddRaceModal()" class="editor-button">Add Race</button>
+                <button id="removeRaceButton" data-selected="false" onclick="toggleDeleteButtons()" class="editor-button">Remove Race</button>
+            </div>
+        </div>
+
+        
+        <div id="addRaceModal" class="modal">
+            <div class="modal-content">
+                <div class="form">
+                    <span class="close" onclick="toggleAddRaceModal()"></span>
+                    <h1 class="header">Event Setup</h1>
+                    <p class="subheader">Welcome to the event builder!</p>
+                    <p class="subheader">Fill out the form below to set up an event</p>
+                    <form id="createRaceForm" onsubmit="handleRaceFormSubmit(event)">
+                        <div class="createRaceDiv">
+                            <div class="race-details-top">
+                                <p class="subtext">Add a <strong>name</strong> for the event e.g. '800m' or 'high jump'</p>
+                                <label for="raceName">Event Name:</label>
+                                <input type="text" id="raceName" name="raceName" required>
+                            </div>
+                            <div class="race-details">
+                                <p class="subtext">Add an <strong>age group</strong> for the event. e.g. 'u20'</p>
+                                <label for="raceAgeGroup">Age Group:</label>
+                                <input type="text" id="raceAgeGroup" name="raceAgeGroup" required>
+                            </div>
+                            <div class="race-details">
+                                <p class="subtext">Add a <strong>gender</strong> for the event</p>
+                                <label for="raceGenderGroup">Gender Group:</label>
+                                <select id="raceGenderGroup" name="raceGenderGroup" required>
+                                    <option value="" disabled selected>Select Gender Group</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="mixed">Open</option>
+                                </select>
+                            </div>
+                            <div class="race-details">
+                                <p class="subtext">Add a <strong>date</strong> for the event</p>
+                                <label for="raceDate">Date:</label>
+                                <input type="date" id="raceDate" name="raceDate" required>
+                            </div>
+                            <div class="race-details">
+                                <p class="subtext">Add a <strong>time</strong> for the event</p>
+                                <label for="raceTime">Time:</label>
+                                <input type="time" id="raceTime" name="raceTime" required>
+                            </div>
+                            <div class="race-details">
+                                <p>Select a <strong>Location</strong> for the event</p>
+                                <label for="raceLocation">Location:</label>
+                                <input type="text" id="raceLocation" name="raceLocation" required>
+                            </div>
+                            <div class="race-details">
+                                <p>Select a <strong>heat size</strong> for an event</p>
+                                <label for="raceHeatSize">heat size:</label>
+                                <input type="number" id="raceHeatSize" name="raceheatSize" required min="1" step="1">
+                            </div>
+                            <div class="race-details">
+                                <p>Add a <strong>price</strong> for the event entry (0.00 if free)</p>
+                                <label for="racePrice">Price(£):</label>
+                                <input type="number" id="racePrice" name="racePrice" step="0.01" min="0">
+                            </div>
+                            <div class="race-details">
+                                <p>Add a <strong>description</strong> of the event (optional)</p>
+                                <label for="raceDescription">Description:</label>
+                                <textarea id="raceDescription" name="raceDescription"></textarea><br /><br />
+                            </div>
+                        </div>
+                        <div class="submit-form">
+                            <button type="submit" id="submitButton" class="submit-button">Create Event</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="\javaScript\events_editor.js"></script>
+</body>
+</html>

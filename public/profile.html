@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="css tester/styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="/events_editor">Events</a>
+            <a href="/entrants_editor">Entrants</a>
+            <a href="/declarations_editor">Declarations</a>
+            <a href="/results_editor">Results</a>
+        </div>
+        <div class="nav-right">
+            <a href="/profile" class="logo">
+                <img src="assets\Screenshot empty.png" alt="Logo" class="nav-logo">
+            </a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h2>Profile</h2>
+        <p>Username: <%= user.username %></p>
+        <p>Email: <%= user.email %></p>
+        <!-- Add more profile details and editing functionality as needed -->
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>

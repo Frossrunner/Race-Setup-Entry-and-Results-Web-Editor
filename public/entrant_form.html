@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/entrant_form.css" />
+    <title>Center Div</title>
+</head>
+<body>
+    <div class="center-div">
+        <h1 class="header">Entrant Registration Form</h1>
+      <p class="subheader">*Please only submit the form <strong>once</strong> for each entrant*</p>
+      <form id="enter-form">
+        <!-- Page 1 -->
+        <div class="form-page" id="page-1">
+          <div class="entrant-details">
+            <p class="subtext">Please add the participants <strong>forename</strong></p>
+            <p class="subtext">*required*</p>
+            <label for="forename">Forename:</label>
+            <input type="text" id="forename" name="forename" required /><br /><br />
+          </div>
+          <div class="entrant-details">
+            <p class="subtext">Please add the participants <strong>surname</strong></p>
+            <p class="subtext">*required*</p>
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname" name="surname" required /><br /><br />
+          </div>
+          <button type="button" class="next-button" onclick="nextPage(2)">Next</button>
+        </div>
+        <!-- Page 2 -->
+        <div class="form-page" id="page-2" style="display: none;">
+          <div class="entrant-details">
+            <p class="subtext">Please add the participants <strong>sex</strong></p>
+            <p class="subtext">*required*</p>
+            <label for="gender">Sex:</label>
+            <select id="gender" name="gender" onchange="fetchAndPopulateRaces()">
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+            </select><br /><br />
+          </div>
+          <div class="entrant-details">
+            <p class="subtext">Please add the participants <strong>date of birth</strong></p>
+            <p class="subtext">*required*</p>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" onclick="fetchAndPopulateRaces()" required /><br /><br />
+          </div>
+          <button type="button" class="prev-button" onclick="prevPage(1)">Previous</button>
+          <button type="button" class="next-button" onclick="nextPage(3)">Next</button>
+        </div>
+        <!-- Page 3 -->
+        <div class="form-page" id="page-3" style="display: none;">
+          <div class="entrant-details">
+            <p class="subtext">Please add the participants <strong>club</strong></p>
+            <p class="subtext">*required*</p>
+            <label for="club">Club:</label>
+            <input type="text" id="club" name="club" required /><br /><br />
+          </div>
+          <div class="entrant-details">
+            <p class="subtext">Please declare if the participant is a member of a <strong>national federation</strong>, e.g. Scottish Athletics.</p>
+            <p class="subtext">*leave blank if not applicable*</p>
+            <label for="federation_member">Federation Member:</label>
+            <input type="text" id="federation_member" name="federation_member" /><br /><br />
+          </div>
+          <button type="button" class="prev-button" onclick="prevPage(2)">Previous</button>
+          <button type="button" class="next-button" onclick="nextPage(4)">Next</button>
+        </div>
+        <!-- Page 4 -->
+        <div class="form-page" id="page-4" style="display: none;">
+          <div class="entrant-details">
+            <p class="subtext">Please add an <strong>email</strong></p>
+            <p class="subtext">*required*</p>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required /><br /><br />
+          </div>
+          <div class="entrant-details">
+            <p class="subtext">Please add a <strong>phone number</strong></p>
+            <p class="subtext">*required*</p>
+            <label for="phone_number">Phone Number:</label>
+            <input type="tel" id="phone_number" name="phone_number" required /><br /><br />
+          </div>
+          <div class="entrant-details">
+            <p class="subtext">Please add an <strong>address</strong></p>
+            <p class="subtext">*required*</p>
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea><br /><br />
+          </div>
+          <button type="button" class="prev-button" onclick="prevPage(3)">Previous</button>
+          <button type="button" class="next-button" onclick="nextPage(5)">Next</button>
+        </div>
+        <!-- Page 5 -->
+        <div class="form-page" id="page-5" style="display: none;">
+          <div class="entrant-details">
+            <p class="subtext">Please select the <strong>events</strong> to enter.</p>
+            
+            <label for="races">Select events:</label>
+            <div class="dropdown" id="raceOptions"></div>
+          </div>
+          <button type="button" class="prev-button" onclick="prevPage(4)">Previous</button>
+        </div>
+      </form>
+      <div class="submit-form">
+        <button type="submit" class="submit-button" id="submit-button" onclick="collectFormData()">Submit Form</button>
+      </div>
+    </div>
+    <script type="module" src="javaScript/entrant_form.js"></script>
+</body>
+</html>

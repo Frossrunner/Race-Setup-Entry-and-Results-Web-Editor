@@ -1,0 +1,423 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: linear-gradient(to top right, rgba(17, 0, 130, 0.9), rgba(133, 0, 0, 0.9));
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styles for the race editor container */
+.race-editor {
+    margin-top: 5%;
+    margin-bottom: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 750px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    gap: 20px;
+}
+
+/* Styles for the form container */
+.form {
+    height: 100%;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items to the top */
+    border-radius: 8px;
+    border: 2px solid #230082;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.4);
+    position: relative;
+}
+
+/* Style the header */
+.header {
+    font-size: 28px;
+    text-align: center;
+    background-color: rgba(3, 0, 105, 1);
+    padding: 5%;
+    color: rgb(253, 224, 224);
+    margin-top: 19px; /* Ensure there is no extra margin at the top */
+}
+
+.info-button {
+    display: inline-flex;
+    float: right;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #ffd8d8;
+    color: #0056b3;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.info-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);
+}
+
+.info-button i {
+    font-size: 20px;
+}
+
+/* Modal specific header */
+.modal .header {
+    font-size: 28px;
+    text-align: center;
+    background-color: #850000;
+    padding: 5%;
+}
+
+.subheader, .subtext {
+    font-size: 17px;
+    margin-left: 5%;
+}
+
+.race-details, .race-details-top {
+    max-width: 80%;
+}
+
+.race-details p, .race-details-top p {
+    font-size: 15px;
+}
+
+.race-details label, .race-details-top label {
+    font-size: 12px;
+    margin-left: 3%;
+    font-weight: bold;
+}
+
+button.submit-button {
+    font-size: 15px;
+    padding: 10px 20px;
+    background-color: #850000; /* Deep red */
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s ease;
+}
+
+button.submit-button:hover {
+    background-color: #230082; /* Royal blue on hover */
+    color: whitesmoke; /* Ensuring text color remains the same for good UX */
+    transform: scale(1.1); /* Enhanced interaction */
+}
+
+.modal {
+    display: none;
+}
+
+.createRaceDiv {
+    margin-left: 7%;
+    margin-right: 10%;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 0% 5% 5% 5%;
+    border-radius: 8px;
+    border: 2px solid #8f0000; /* Consistent blue border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow for 3D effect */
+    background: linear-gradient(to top right, rgba(255, 207, 207, 0.8), rgba(213, 207, 255, 0.8));
+}
+
+.createRaceDiv input, select, textarea {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.submit-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Adds space above the button */
+    margin-bottom: 22px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: #000000; /* Dark gray color for a subtle look */
+    background: transparent; /* No background for the default state */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transitions */
+    outline: none; /* Remove outline on focus */
+    margin-top: 20px;
+    padding: 0px 8px 0px 8px;
+    border-radius: 3px;
+}
+
+.close:hover {
+    color: #280000; /* Deep red color on hover */
+    transform: scale(1.2); /* Slightly increase size on hover */
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.close::before {
+    content: '\00d7'; /* Unicode for multiplication sign (×) */
+    font-family: Arial, sans-serif; /* Ensure a consistent font */
+}
+
+.editors {
+    display: flex;
+    flex-direction: row;
+}
+
+.editors button {
+    margin-left: 4%;
+}
+
+/* Styles for the grid container */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 90%;
+    max-height: 95%;
+    padding: 10px;
+    margin: 0% 5% 5% 5%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    background: linear-gradient(to top right, rgba(255, 167, 167, 1), rgba(179, 167, 255, 1));
+    border-radius: 4px;
+    border: 2px solid #0056b3;
+}
+
+.events {
+    height: 65%; /* ensures that the editor window is well proportioned even for little to no races being present */
+}
+
+.grid-item, .grid-item-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Define your column layout */
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: rgba(255,255,255,0);
+}
+
+.grid-item-header {
+    font-weight: bold;
+    background-color: #0056b3;
+    color: white;
+}
+
+.grid-item div, .grid-item-header div {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;    /* Center vertically */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* General button styles */
+button.editor-button, .edit-btn, .save-btn, .cancel-btn {
+    font-size: 10px;
+    max-width: 50%;
+    padding: 5px 10px;
+    background-color: #850000; /* Deep red */
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgb(11, 0, 111);
+    transition: background-color 0.3s, color 0.3s, transform 0.3s ease;
+}
+
+button.saveButton {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #850000; /* Deep red */
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s ease;
+}
+
+button.saveButton:hover, button.editor-button:hover, .edit-btn:hover, .save-btn:hover, .cancel-btn:hover {
+    background-color: #230082; /* Royal blue on hover */
+    color: whitesmoke; /* Ensuring text color remains the same for good UX */
+    transform: scale(1.1); /* Enhanced interaction */
+}
+
+/* Styles for the popup overlay */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    z-index: 1000;
+    width: 400px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to top right, rgba(255, 167, 167, 1), rgba(179, 167, 255, 1));
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.close-btn {
+    grid-column: span 2;
+    justify-self: right;
+    padding: 5px 10px;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+}
+
+.popup h2 {
+    grid-column: span 2;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.popup p {
+    margin: 0;
+}
+
+.popup .label {
+    font-weight: bold;
+}
+
+.popup p, .popup label {
+    border-bottom: 2px solid #ffffff; /* 2px border, solid style, white color */
+    padding-bottom: 5px; /* Optional: add some padding for spacing */
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.nav-left a {
+    margin-right: 15px;
+    width: 100%;
+}
+
+.nav-right a {
+    margin-left: 15px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    font-size: 1em;
+    border-radius: 20px;
+}
+
+nav a.logo {
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.nav-logo {
+    max-width: 100px;
+    max-height: 40px;
+    width: 100%; 
+    height: auto;
+}
+
+
+.info-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(to top right, rgba(255, 207, 207, 1), rgba(213, 207, 255, 1));
+}
+
+/* Content Styling */
+.info-popup .info-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-popup li {
+    margin: 20px 0px 15px 0px;
+}
+
+.info-popup .info-content h2 {
+    margin-bottom: 10px;
+    color: #0056b3;
+}
+
+.info-popup .info-content p {
+    margin: 0;
+    color: #333;
+}
+
+.info-popup button.close {
+    margin: 0px;
+}
