@@ -10,7 +10,7 @@ This is a web-based application designed to manage various aspects of an athleti
 - **Results Management**: Add and publish results for different events.
 - **Declarations Management**: Handle entrant declarations and generate heats.
 - **Profile Management**: Users can view and manage their profile information.
-- **API Endpoints**: A backend powered by `app.js` managing all necessary API endpoints.
+- **API Endpoints**: A backend powered by `encrypted_app.js` managing all necessary API endpoints.
 
 ## Project Structure
 
@@ -27,7 +27,7 @@ This is a web-based application designed to manage various aspects of an athleti
 
 - **HTML/CSS**: Frontend structure and styling.
 - **JavaScript**: Client-side scripting and form handling.
-- **Node.js**: Backend server handling all API requests (`app.js`).
+- **Node.js**: Backend server handling all API requests (`encrypted_app.js`).
 - **Express.js**: Node.js framework for building web applications.
 - **Encryption**: All sensitive data, such as passwords, is encrypted to ensure security.
 - **Font Awesome**: Icons for better visual representation in the UI.
